@@ -88,7 +88,7 @@ const ParticlesComponent = (props: any) => {
     []
   );
 
-  return <Particles id={props.id} init={particlesLoaded} options={options} />;
+  return <Particles id={props.id} options={options} />;
 };
 
 export default ParticlesComponent;
