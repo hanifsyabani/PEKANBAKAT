@@ -76,7 +76,7 @@ export default function Navbar() {
       >
         <ul className="flex flex-col items-center gap-10 text-sm font-semibold text-white">
           {itemNav.map((item, i) => (
-            <a href={item.link}><li key={i} className="hover:text-primary cursor-pointer">{item.name}</li></a>
+            <a key={i} href={item.link}><li  className="hover:text-primary cursor-pointer">{item.name}</li></a>
           ))}
         </ul>
       </nav>
@@ -91,7 +91,7 @@ export default function Navbar() {
         <div className="flex items-center gap-14">
           <ul className="flex items-center gap-10 text-sm font-semibold">
             {itemNav.map((item, i) => (
-              <a href={item.link}><li key={i} className="hover:text-primary cursor-pointer">{item.name}</li></a>
+              <a key={i} href={item.link}><li  className="hover:text-primary cursor-pointer">{item.name}</li></a>
             ))}
           </ul>
           <LoginButton />
