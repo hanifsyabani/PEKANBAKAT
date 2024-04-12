@@ -8,27 +8,27 @@ import LoginButton from "./LoginButton";
 const itemNav = [
   {
     name: "Beranda",
-    link: "/",
+    link: "#home",
   },
   {
     name: "Kategori",
-    link: "/dokumentasi",
+    link: "#category",
   },
   {
     name: "Timeline",
-    link: "/faq",
+    link: "#timeline",
   },
   {
     name: "Syarat & ketentuan",
-    link: "/terms",
+    link: "#terms",
   },
   {
-    name: "Berita",
-    link: "/about",
+    name:"Dokumentasi",
+    link: "#dokumentasi",
   },
   {
     name: "FAQ",
-    link: "/contact",
+    link: "#faq",
   },
 ];
 
@@ -76,7 +76,7 @@ export default function Navbar() {
       >
         <ul className="flex flex-col items-center gap-10 text-sm font-semibold text-white">
           {itemNav.map((item, i) => (
-            <li key={i} className="hover:text-primary cursor-pointer">{item.name}</li>
+            <a href={item.link}><li key={i} className="hover:text-primary cursor-pointer">{item.name}</li></a>
           ))}
         </ul>
       </nav>
@@ -91,7 +91,7 @@ export default function Navbar() {
         <div className="flex items-center gap-14">
           <ul className="flex items-center gap-10 text-sm font-semibold">
             {itemNav.map((item, i) => (
-              <li key={i} className="hover:text-primary cursor-pointer">{item.name}</li>
+              <a href={item.link}><li key={i} className="hover:text-primary cursor-pointer">{item.name}</li></a>
             ))}
           </ul>
           <LoginButton />

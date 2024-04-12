@@ -16,10 +16,8 @@ import { getSession, signOut } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { TbLayoutDashboard } from "react-icons/tb";
-import Sidebar from "./Sidebar";
 import { GrTask } from "react-icons/gr";
 import { MdOutlineDashboard } from "react-icons/md";
-import Image from "next/image";
 
 export default function Nav({ title }: { title: string }) {
   const [userData, setUserData] = useState<{

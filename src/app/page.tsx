@@ -50,7 +50,7 @@ export default function Home() {
             <ScrollButton />
             <Image src={kmmuba} alt="kmmuba" width={300} height={300} className="fixed top-20 w-[30rem] right-2 opacity-10  lg:hidden"/>
           </div>
-          <section className="lg:pl-20 flex relative pt-20 z-[10rem]">
+          <section id="home" className="lg:pl-20 flex relative pt-20 z-[10rem]">
             <div className="lg:w-1/2 mt-14">
               <div className="flex items-center justify-center lg:justify-start mb-4 font-bold">
                 <Typewriter
@@ -107,7 +107,7 @@ export default function Home() {
             </div>
           </section>
 
-          <section className="lg:flex lg:px-20 items-center gap-10 lg:my-52 lg:bg-[#FBF8FF] relative my-36 px-6">
+          <section id="about" className="lg:flex lg:px-20 items-center gap-10 lg:my-52 lg:bg-[#FBF8FF] relative my-36 px-6">
             <div className="lg:w-1/2 lg:pt-20">
               <Image
                 alt="about"
@@ -133,7 +133,7 @@ export default function Home() {
             </div>
           </section>
 
-          <section className="lg:px-20 px-10 mt-32 relative lg:bg-white w-full ">
+          <section id="category" className="lg:px-20 px-10 mt-32 relative lg:bg-white w-full ">
             <HeaderGray title={"Category"} />
             <h1 className="text-5xl font-extrabold mt-5">
               Kategori Perlombaan
@@ -143,7 +143,7 @@ export default function Home() {
             </div>
           </section>
 
-          <section className="lg:px-20 lg:my-52 relative lg:bg-white px-6">
+          <section id="timeline" className="lg:px-20 lg:my-52 relative lg:bg-white px-6">
             <div className="flex flex-col justify-center items-center">
               <HeaderGray title={"Alur Timeline"} />
               <h1 className="text-5xl font-extrabold mt-5">
@@ -185,7 +185,7 @@ export default function Home() {
             </div>
           </section>
 
-          <section className="mt-32 px-[5%] lg:bg-[#FBF8FF] relative py-10">
+          <section id="terms" className="mt-32 px-[5%] lg:bg-[#FBF8FF] relative py-10">
             <div>
               <HeaderGray title={"Syarat dan Ketentuan"} />
               <h1 className="text-5xl font-extrabold mt-5">
@@ -199,13 +199,13 @@ export default function Home() {
             </div>
           </section>
 
-          <section className="lg:mt-32 my-20 px-[5%] relative lg:bg-white">
+          <section id="dokumentasi"  className="lg:mt-32 my-20 px-[5%] relative lg:bg-white">
             <HeaderGray title={"Dokumentasi Perlombaan"} />
             <h1 className="text-5xl font-extrabold mt-5">Foto Pekat 2023</h1>
             <Dokumentasi />
           </section>
 
-          <section className="lg:mt-72 lg:px-[5%] relative lg:bg-white px-4">
+          <section id="faq" className="lg:mt-72 lg:px-[5%] relative lg:bg-white px-4">
             <HeaderGray title={"FAQ"} />
             <h1 className="text-5xl font-extrabold mt-5">
               Pertanyaan yang sering diajukan

@@ -6,7 +6,7 @@ import BackButton from "@/components/Dashboard/BackButton";
 import { Spinner, useToast } from "@chakra-ui/react";
 import { useRouter } from "next/navigation";
 
-export default function page() {
+export default function Page() {
   const [values, setValues] = useState({
     nama: "",
     nisn: "",

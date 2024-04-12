@@ -31,7 +31,7 @@ export default function Terms() {
         {syarat.map((item) => {
           if (item.id === 1) {
             return (
-              <>
+              <div key={item.id}>
                 <div className="bg-primary w-1/2 py-3 rounded-full flex items-center justify-center">
                   <h1 className="text-xl text-white font-bold">{item.category}</h1>
                 </div>
@@ -43,12 +43,12 @@ export default function Terms() {
                     </div>
                   ))}
                 </ul>
-              </>
+              </div>
             );
           }
         })}
       </div>
-      <div className="mt-7 lg:mt-0">
+      <div key={syarat[1].id} className="mt-7 lg:mt-0">
         {syarat.map((item) => {
           if (item.id === 2) {
             return (
