@@ -9,8 +9,13 @@ import { ChangeEvent, FormEvent, useState } from "react";
 import logo from "@/assets/logo.png";
 import logoLogin from "@/assets/login.jpg";
 
+interface FormValues {
+  email: string;
+  password: string;
+}
+
 export default function LoginForm(){
-  const [values, setValues] = useState({});
+  const [values, setValues] = useState<FormValues>({ email: "", password: "" });
   const [isLoading, setIsLoading] = useState(false);
   const toast = useToast();
   const router = useRouter();
