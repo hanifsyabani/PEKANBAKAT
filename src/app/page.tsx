@@ -1,113 +1,221 @@
+"use client";
+
+import Navbar from "@/components/Navbar/Navbar";
+import home1 from "@/assets/home1.png";
+import home2 from "@/assets/home2.png";
+import home3 from "@/assets/home3.png";
+import about from "@/assets/about.png";
 import Image from "next/image";
+import { useEffect, useState } from "react";
+import Loading from "./loading";
+import { AiFillThunderbolt } from "react-icons/ai";
+import {
+  MdKeyboardDoubleArrowRight,
+  MdOutlineRocketLaunch,
+} from "react-icons/md";
+import Link from "next/link";
+import HeaderGray from "@/components/Header/HeaderGray";
+import Card from "@/components/Card/Card";
+import Dokumentasi from "@/components/Dokumentasi";
+import Typewriter from "typewriter-effect";
+import Faq from "@/components/Faq/Faq";
+import ParticlesComponent from "@/components/Particle";
+import Terms from "@/components/Terms/Terms";
+import { useFormStatus } from "react-dom";
+import Footer from "@/components/Footer";
+import ScrollButton from "@/components/ScrollButton";
+import kmmuba from '@/assets/LogoKmmuba.png'
 
 export default function Home() {
+  const [isLoading, setIsLoading] = useState(true);
+  const { pending } = useFormStatus();
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 0);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
+    <div>
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <>
+          <Navbar />
+          <ParticlesComponent />
+          <div className="relative">
+            <ScrollButton />
+            <Image src={kmmuba} alt="kmmuba" width={300} height={300} className="fixed top-20 w-[30rem] right-2 opacity-10  lg:hidden"/>
+          </div>
+          <section className="lg:pl-20 flex relative pt-20 z-[10rem]">
+            <div className="lg:w-1/2 mt-14">
+              <div className="flex items-center justify-center lg:justify-start mb-4 font-bold">
+                <Typewriter
+                  options={{
+                    strings: [
+                      "Pendaftaran telah dibuka",
+                      "Silahkan daftarkan diri anda ",
+                    ],
+                    autoStart: true,
+                    loop: true,
+                  }}
+                />
+                <AiFillThunderbolt size={20} className="text-secondary" />
+              </div>
+              <div className="lg:w-[63%]">
+                <h1 className="lg:text-6xl lg:max-w-lg text-center text-5xl lg:text-left tracking-wider font-extrabold">
+                  Pekan Bakat dan Kreativitas Siswa
+                </h1>
+                <p className="text-lg my-4 text-center lg:text-left">Salurkan bakatmu mulai dari sini</p>
+                <div className="flex items-center w-1/2 bg-primary px-4 py-2 justify-center gap-2 rounded-xl hover:bg-blue-900 cursor-pointer mx-auto lg:mx-0">
+                  <MdOutlineRocketLaunch size={20} className="text-secondary" />
+                  <Link href={"/register"}>
+                    <button className="font-bold text-white z-50" disabled={pending}>
+                      Daftar Sih
+                    </button>
+                  </Link>
+                </div>
+              </div>
+            </div>
+            <div className="lg:w-1/2 bounce hidden lg:block">
+              <Image
+                alt="logo"
+                src={home1}
+                width={500}
+                height={500}
+                loading="lazy"
+                className="absolute w-[25rem] lg:right-60 lg:top-20 z-10"
+              />
+              <Image
+                alt="logo"
+                src={home2}
+                width={500}
+                height={500}
+                loading="lazy"
+                className="absolute w-52 right-[30rem] top-10"
+              />
+              <Image
+                alt="logo"
+                src={home3}
+                width={500}
+                height={500}
+                className="absolute w-72 right-32 top-14 z-20"
+              />
+            </div>
+          </section>
 
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-full sm:before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full sm:after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
+          <section className="lg:flex lg:px-20 items-center gap-10 lg:my-52 lg:bg-[#FBF8FF] relative my-36 px-6">
+            <div className="lg:w-1/2 lg:pt-20">
+              <Image
+                alt="about"
+                src={about}
+                width={500}
+                height={500}
+                loading="lazy"
+              />
+            </div>
+            <div className="lg:w-1/2 relative">
+              <HeaderGray title="About Pekat" />
+              <div className="lg:mt-14 mt-5">
+                <h1 className="text-5xl font-extrabold lg:max-w-md">
+                  Apa itu PEKAT?
+                </h1>
+                <p className="lg:pt-8 pt-4 lg:max-w-sm">
+                  Pekan bakat yang diselenggaran oleh organisasi kedaerahan
+                  Universitas Sriwijaya merupakan kegiatan perlombaan untuk
+                  menyalurkan bakat yang dimiliki oleh siswa yang berada di
+                  Kabupaten Musi Banyuasin.
+                </p>
+              </div>
+            </div>
+          </section>
 
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
+          <section className="lg:px-20 px-10 mt-32 relative lg:bg-white w-full ">
+            <HeaderGray title={"Category"} />
+            <h1 className="text-5xl font-extrabold mt-5">
+              Kategori Perlombaan
+            </h1>
+            <div className="flex flex-wrap items-center justify-center gap-10 mt-14">
+              <Card />
+            </div>
+          </section>
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
+          <section className="lg:px-20 lg:my-52 relative lg:bg-white px-6">
+            <div className="flex flex-col justify-center items-center">
+              <HeaderGray title={"Alur Timeline"} />
+              <h1 className="text-5xl font-extrabold mt-5">
+                Timeline Perlombaan
+              </h1>
+            </div>
+            <div className="bg-gray-200 px-3 py-4 mx-auto lg:w-[40rem] w-full shadow-xl rounded-full flex justify-evenly mt-14 items-center">
+              <h1 className="lg:text-xl font-semibold">Registrasi</h1>
+              <MdKeyboardDoubleArrowRight size={25} />
+              <h1 className="lg:text-xl font-semibold">Perlombaan</h1>
+              <MdKeyboardDoubleArrowRight size={25} />
+              <h1 className="lg:text-xl font-semibold">Pengumuman</h1>
+            </div>
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore starter templates for Next.js.
-          </p>
-        </a>
+            <div className="flex flex-col lg:flex-row justify-center items-center gap-7 mt-14">
+              <div className="text-center ">
+                <div className="bg-primary w-14 h-14 rounded-full flex items-center justify-center mx-auto">
+                  <div className="w-4 h-4 bg-secondary rounded-full"></div>
+                </div>
+                <h1 className="font-bold mt-4">11 - 20 Juni 2024</h1>
+                <p className="text-sm font-bold text-gray-400">Registrasi</p>
+              </div>
+              <hr className="border w-28 border-black" />
+              <div className="text-center">
+                <div className="bg-primary w-14 h-14 rounded-full flex items-center justify-center mx-auto">
+                  <div className="w-4 h-4 bg-secondary rounded-full"></div>
+                </div>
+                <h1 className="font-bold mt-4">20 - 30 Juni 2024</h1>
+                <p className="text-sm font-bold text-gray-400">Perlombaan</p>
+              </div>
+              <hr className="border w-28 border-black" />
+              <div className="text-center">
+                <div className="bg-primary w-14 h-14 rounded-full flex items-center justify-center mx-auto">
+                  <div className="w-4 h-4 bg-secondary rounded-full"></div>
+                </div>
+                <h1 className="font-bold ">30 Juni 2024</h1>
+                <p className="text-sm font-bold text-gray-400">Pengumuman</p>
+              </div>
+            </div>
+          </section>
 
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50 text-balance`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+          <section className="mt-32 px-[5%] lg:bg-[#FBF8FF] relative py-10">
+            <div>
+              <HeaderGray title={"Syarat dan Ketentuan"} />
+              <h1 className="text-5xl font-extrabold mt-5">
+                Persyaratan Khusus
+              </h1>
+              <p className="max-w-xl mt-5 font-semibold text-xl text-gray-500">
+                Perlombaan ini hanya dikhususkan kepada talenta daerah Kabupaten
+                Musi Banyuasin
+              </p>
+              <Terms />
+            </div>
+          </section>
+
+          <section className="lg:mt-32 my-20 px-[5%] relative lg:bg-white">
+            <HeaderGray title={"Dokumentasi Perlombaan"} />
+            <h1 className="text-5xl font-extrabold mt-5">Foto Pekat 2023</h1>
+            <Dokumentasi />
+          </section>
+
+          <section className="lg:mt-72 lg:px-[5%] relative lg:bg-white px-4">
+            <HeaderGray title={"FAQ"} />
+            <h1 className="text-5xl font-extrabold mt-5">
+              Pertanyaan yang sering diajukan
+            </h1>
+            <Faq />
+          </section>
+
+          <Footer />
+        </>
+      )}
+    </div>
   );
 }
