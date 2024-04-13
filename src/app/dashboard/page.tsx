@@ -10,7 +10,6 @@ export default function Dashboard() {
   const [userData, setUserData] = useState<{
     name?: string | null;
     email?: string | null;
-    id?: string | null;
   } | null>(null);
 
   useEffect(() => {

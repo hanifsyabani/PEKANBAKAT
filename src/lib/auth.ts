@@ -3,7 +3,7 @@ import Credentials from "next-auth/providers/credentials";
 import { prisma } from "./prisma";
 import bcrypt from 'bcrypt'
 
-async function login(credentials: any) {
+async function login(credentials :{email: string, password: string}) {
   const { email, password } = credentials;
 
   const user = await prisma.user.findFirst({
@@ -30,16 +30,15 @@ export const authOptions: NextAuthOptions = {
   },
   providers: [
     Credentials({
-      credentials: {},
+      credentials:{},
       async authorize(credentials) {
-        const user = await login(credentials);
+        const user = await login(credentials as { email: string, password: string });
         if (!user) return null;
 
         return {
           id: user.id,
           name: user.username,
           email: user.email,
-          password: user.password
         };
       }
     })
