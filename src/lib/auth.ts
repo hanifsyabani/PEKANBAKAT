@@ -23,25 +23,27 @@ async function login(credentials :{email: string, password: string}) {
 
 export const authOptions: NextAuthOptions = {
   pages: {
-    signIn: '/login'
+    signIn: "/login",
   },
   session: {
-    strategy: 'jwt'
+    strategy: "jwt",
   },
   providers: [
     Credentials({
-      credentials:{},
-      async authorize(credentials) {
-        const user = await login(credentials as { email: string, password: string });
+      credentials: {},
+      async authorize(credentials: Record<string, string> | undefined) {
+        const user = await login(
+          credentials as { email: string; password: string }
+        );
         if (!user) return null;
 
         return {
-          id: user.id,
+          id: user.id.toString(),
           name: user.username,
           email: user.email,
         };
-      }
-    })
+      },
+    }),
   ],
   callbacks: {
     jwt({ token, user }) {
@@ -50,6 +52,6 @@ export const authOptions: NextAuthOptions = {
     },
     session({ session, token }) {
       return { ...session, id: token.id };
-    }
-  }
+    },
+  },
 };
